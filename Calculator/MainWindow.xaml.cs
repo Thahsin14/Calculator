@@ -37,23 +37,28 @@ namespace Calculator
 
         private void myResult()
         {
-            float a = float.Parse(secondTopBox), b = float.Parse(topBox);
-            Dictionary<string, Func<float, float, float>> functionDictionary = new Dictionary<string, Func<float, float, float>>();
-            functionDictionary.Add("*", (a,b) => a * b);
-            functionDictionary.Add("/", (a,b) => a / b);
-            functionDictionary.Add("-", (a, b) => a - b);
-            functionDictionary.Add("+", (a, b) => a + b);
+            if (!(secondTopBox == "" || secondTopBox == null || whatsChoosen == "" || whatsChoosen == null))
+            {
 
-            if(functionDictionary.TryGetValue(whatsChoosen,out var selectedFunction))
-            {
-                float result = selectedFunction(a, b);
-                clearAll();
-                topBox = result.ToString();
-                updateTopBox();
-            }
-            else
-            {
-                MessageBox.Show("Something went wrong!");
+
+                float a = float.Parse(secondTopBox), b = float.Parse(topBox);
+                Dictionary<string, Func<float, float, float>> functionDictionary = new Dictionary<string, Func<float, float, float>>();
+                functionDictionary.Add("*", (a, b) => a * b);
+                functionDictionary.Add("/", (a, b) => a / b);
+                functionDictionary.Add("-", (a, b) => a - b);
+                functionDictionary.Add("+", (a, b) => a + b);
+
+                if (functionDictionary.TryGetValue(whatsChoosen, out var selectedFunction))
+                {
+                    float result = selectedFunction(a, b);
+                    clearAll();
+                    topBox = result.ToString();
+                    updateTopBox();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong!");
+                }
             }
         }
 
@@ -68,77 +73,68 @@ namespace Calculator
             topBox = "";
             updateTopBox();
         }
+        private void buttonClicked(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            switch(clickedButton.Name)
+            {
+                case "zero":
+                    topBox += 0;
+                    break;
+                case "one":
+                    topBox += 1;
+                    break;
+                case "two":
+                    topBox += 2;
+                    break;
+                case "three":
+                    topBox += 3;
+                    break;
+                case "four":
+                    topBox += 4;
+                    break;
+                case "five":
+                    topBox += 5;
+                    break;
+                case "six":
+                    topBox += 6;
+                    break;
+                case "seven":
+                    topBox += 7;
+                    break;
+                case "eight":
+                    topBox += 8;
+                    break;
+                case "nine":
+                    topBox += 9;
+                    break;
+                case "comma":
+                    topBox += ",";
+                    break;
 
-        private void zeroClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 0;
+                case "deletePrevious":
+                    topBox = topBox.Substring(0, topBox.Length - 1);
+                    break;
+                case "multiply":
+                    whatsChoosen = "*";
+                    onOperation();
+                    break;
+                case "divide":
+                    whatsChoosen = "/";
+                    onOperation();
+                    break;
+                case "plus":
+                    whatsChoosen = "+";
+                    onOperation();
+                    break;
+                case "minus":
+                    whatsChoosen = "-";
+                    onOperation();
+                    break;
+            }
             updateTopBox();
         }
-        private void oneClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 1;
-            updateTopBox();
-        }
-        private void twoClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 2;
-            updateTopBox();
-        }
-        private void threeClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 3;
-            updateTopBox();
-        }
-        private void fourClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 4;
-            updateTopBox();
-        }
-        private void fiveClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 5;
-            updateTopBox();
-        }
-        private void sixClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 6;
-            updateTopBox();
-        }
-        private void sevenClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 7;
-            updateTopBox();
-        }
-        private void eightClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 8;
-            updateTopBox();
-        }
-        private void nineClick(object sender, RoutedEventArgs e)
-        {
-            topBox += 9;
-            updateTopBox();
-        }
-        private void multiplyClick(object sender, RoutedEventArgs e)
-        {
-            whatsChoosen = "*";
-            onOperation();
-        }
-        private void divideClick(object sender, RoutedEventArgs e)
-        {
-            whatsChoosen = "/";
-            onOperation();
-        }
-        private void addClick(object sender, RoutedEventArgs e)
-        {
-            whatsChoosen = "+";
-            onOperation();
-        }
-        private void minusClick(object sender, RoutedEventArgs e)
-        {
-            whatsChoosen = "-";
-            onOperation();
-        }
+
         private void myResultClick(object sender, RoutedEventArgs e)
         {
             myResult();

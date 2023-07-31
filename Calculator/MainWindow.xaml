@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="320" Width="216"
+        Title="MainWindow" Height="370" Width="216"
         ResizeMode="CanMinimize">
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
@@ -26,25 +26,28 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
-        <Button Content="7" Grid.Row="4" Grid.Column="0" Click="sevenClick"/>
-        <Button Content="8" Grid.Row="4" Grid.Column="1" Click="eightClick"/>
-        <Button Content="9" Grid.Row="4" Grid.Column="2" Click="nineClick"/>
-        <Button Content="4" Grid.Row="5" Grid.Column="0" Click="fourClick"/>
-        <Button Content="5" Grid.Row="5" Grid.Column="1" Click="fiveClick"/>
-        <Button Content="6" Grid.Row="5" Grid.Column="2" Click="sixClick"/>
-        <Button Content="1" Grid.Row="6" Grid.Column="0" Click="oneClick"/>
-        <Button Content="2" Grid.Row="6" Grid.Column="1" Click="twoClick"/>
-        <Button Content="3" Grid.Row="6" Grid.Column="2" Click="threeClick"/>
-        <Button Content="0" Grid.Row="7" Grid.Column="1" Click="zeroClick"/>
-
-        <Button Content="x" Grid.Row="4" Grid.Column="3" Click="multiplyClick"/>
-        <Button Content="-" Grid.Row="5" Grid.Column="3" Click="minusClick"/>
-        <Button Content="+" Grid.Row="6" Grid.Column="3" Click="addClick"/>
-        <Button Content="=" Grid.Row="7" Grid.Column="3" Click="myResultClick"/>
-        <Button Content="/" Grid.Row="7" Grid.Column="2" Click="divideClick"/>
-        <Button Content="C" Grid.Row="7" Grid.Column="0" Click="clearAllClick"/>
+        <Button Content="7" Grid.Row="5" Grid.Column="0" Click="buttonClicked" x:Name="seven"/>
+        <Button Content="8" Grid.Row="5" Grid.Column="1" Click="buttonClicked" x:Name="eight"/>
+        <Button Content="9" Grid.Row="5" Grid.Column="2" Click="buttonClicked" x:Name="nine"/>
+        <Button Content="4" Grid.Row="6" Grid.Column="0" Click="buttonClicked" x:Name="four"/>
+        <Button Content="5" Grid.Row="6" Grid.Column="1" Click="buttonClicked" x:Name="five"/>
+        <Button Content="6" Grid.Row="6" Grid.Column="2" Click="buttonClicked" x:Name="six"/>
+        <Button Content="1" Grid.Row="7" Grid.Column="0" Click="buttonClicked" x:Name="one"/>
+        <Button Content="2" Grid.Row="7" Grid.Column="1" Click="buttonClicked" x:Name="two"/>
+        <Button Content="3" Grid.Row="7" Grid.Column="2" Click="buttonClicked" x:Name="three"/>
+        <Button Content="0" Grid.Row="8" Grid.Column="0" Click="buttonClicked" x:Name="zero" Grid.ColumnSpan="2"/>
+        <Button Content=","  Grid.Row="8" Grid.Column="2" Click="buttonClicked" x:Name="comma"/>
+        
+        <Button Content="x" Grid.Row="4" Grid.Column="3" Click="buttonClicked" x:Name="multiply"/>
+        <Button Content="-" Grid.Row="5" Grid.Column="3" Click="buttonClicked" x:Name="minus"/>
+        <Button Content="+" Grid.Row="6" Grid.Column="3" Click="buttonClicked" x:Name="plus"/>
+        <Button Content="/" Grid.Row="4" Grid.Column="2" Click="buttonClicked" x:Name="divide"/>
+        <Button Content="=" Grid.Row="7" Grid.Column="3" Click="myResultClick" Grid.RowSpan="8"/>
+        <Button Content="⌫" Grid.Row="4" Grid.Column="0" Click="buttonClicked" x:Name="deletePrevious"/>
+        <Button Content="C" Grid.Row="4" Grid.Column="1" Click="clearAllClick"/>
         <TextBlock HorizontalAlignment="Right" Grid.Row="1"  Text="" VerticalAlignment="Center" Grid.ColumnSpan="4" x:Name="oldResult" FontSize="20"/>
         <TextBlock HorizontalAlignment="Right" Grid.Row="2"  Text="" VerticalAlignment="Center" Grid.ColumnSpan="4" x:Name="currentOperation"/>
         <TextBlock HorizontalAlignment="Right" Grid.Row="3"  Text="" VerticalAlignment="Center" Grid.ColumnSpan="4" x:Name="calcResult" FontSize="20"/>
